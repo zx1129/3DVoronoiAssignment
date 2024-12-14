@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.10)
+project(3DVoronoiAssignment)
+
+# 设置C++标准
+set(CMAKE_CXX_STANDARD 11)
+
+# 寻找VTK和ITK
+find_package(VTK REQUIRED)
+find_package(ITK REQUIRED)
+include(${VTK_USE_FILE})
+include(${ITK_USE_FILE})
+
+# 添加源文件
+add_executable(3DVoronoiAssignment
+    src/main.cpp
+    src/VoronoiGenerator.cpp
+    src/PCAAnalyzer.cpp
+    src/SliceProcessor.cpp
+)
+
+# 链接库
+target_link_libraries(3DVoronoiAssignment ${VTK_LIBRARIES} ${ITK_LIBRARIES})
